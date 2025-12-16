@@ -66,7 +66,7 @@ class BTCConfirmationMonitor:
             }
             response = requests.post(url, json=data)
             response.raise_for_status()
-            print("[SUCCESS] Telegram notification sent")
+            print("Telegram notification sent")
             return True
         except requests.exceptions.RequestException as e:
             print(f"[ERROR] Failed to send Telegram notification: {e}")
@@ -80,7 +80,7 @@ class BTCConfirmationMonitor:
         if not discord_sent and not telegram_sent:
             print("[WARNING] No notifications were sent. Please check your configuration.")
         
-        print(f"\n[SUCCESS] Transaction has {confirmations} confirmation(s)")
+        print(f"\nTransaction now has {confirmations} confirmation")
     
     def monitor(self, check_interval=60):
         """Monitor the transaction until it gets 1 confirmation"""
@@ -169,7 +169,7 @@ def main():
     )
     monitor.monitor(check_interval)
     
-    print("\n[COMPLETE] Monitoring finished successfully")
+    print("\nMonitoring finished successfully")
 
 if __name__ == "__main__":
     main()
